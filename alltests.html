@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <title>All-Test</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/fontello.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row container-header">
+            <div class="col p-0">
+                <header class="d-md-flex align-items-center justify-content-md-between">
+                    <nav class="navbar p-0 col-12 col-md-auto">
+                        <a class="p-5" href="">Inicio</a>
+                        <a class="p-5" href="documentacion.html">Documentación</a>
+                        <!--<a class="p-5" href="">Soporte</a>-->
+                    </nav>
+                    <!--<form class="col-12 col-md-5 m-0 p-4">
+                        <div class="form-group m-0 d-flex">
+                            <input class="form-control" type="text" id="buscar" placeholder="Busca tu prodúcto">
+                            <button class="m-0 icon-search" type="submit"></button>
+                        </div>
+                    </form>-->
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center mt-5">
+                <h1>Generador de identidades</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div id="container" class="col d-md-flex flex-md-row flex-column p-4">
+                <div class="col-12 col-md-auto d-flex flex-column justify-content-center">
+                    <img class="img-fluid"
+                        src="https://definicionde.es/wp-content/uploads/2019/04/definicion-de-persona-min.jpg"
+                        width="250">
+                    <button id="boton" class="btn btn-info d-md-block d-none">Generar identidad</button>
+                </div>
+                <div id="datos" class="p-2 col-md-5 col-12 shadow-lg container-info">
+                    <!--<p class="m-1 p-0"><b>Nombre:</b></p>
+                        <p class="m-1 p-0"><b>Apellido:</b></p>
+                        <p class="m-1 p-0"><b>Fecha de nacimiento:</b></p>
+                        <p class="m-1 p-0"><b>Dirección:</b></p>
+                        <p class="m-1"><b>Télefono:</b></p>
+                        <p class="m-1"><b>Corréo electrónico:</b></p>
+                        <p class="m-1"><b>Tarjeta de crédito:</b></p>
+                        <p class="m-1"><b>Vence:</b></p>
+                        <p class="m-1"><b>CVV2:</b></p>-->
+                </div>
+                <button type="button" id="boton_responsive"
+                    class="btn btn-info d-sm-block d-md-none boton-responsive">Generar identidad</button>
+            </div>
+        </div>
+        <div class="row ml-4 p-0 mr-4">
+            <div class="text-center col-md d-flex align-items-center justify-content-md-center p-0 m-0">
+                <h2 class="p-4 m-0">Guardar datos</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 ml-4 mb-4 mr-4 mt-4 text-white">
+                <form action="#" class="col-auto p-4 bg-dark" id="formulario">
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group">
+                            <label>Nombre completo</label>
+                            <input id="nombre" class="form-control" type="text"
+                                placeholder="Ingresa el nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de nacimiento</label>
+                            <input id="fecha" class="form-control" type="date"
+                                placeholder="Ingresa la fecha de nacimiento">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Corréo electrónico</label>
+                        <input id="correo" class="form-control" type="email" required
+                            placeholder="Ingresa corréo electrónico">
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        <input id="direccion" class="form-control" type="text" placeholder="Ingresa dirección">
+                    </div>
+                    <div class="form-group">
+                        <label>Télefono</label>
+                        <input id="telefono" class="form-control" type="tel" placeholder="Ingresa télefono">
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group">
+                            <label>Tarjeta de crédito</label>
+                            <input id="tarjeta" class="form-control" type="tel"
+                                placeholder="Ingresa dígitos de la tarjeta">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de expiración</label>
+                            <input id="fechaEX" class="form-control" type="text" placeholder="Ingresa su vencimiento">
+                        </div>
+                    </div>
+                    <div id="error"></div>
+                    <hr>
+                    <button id="guardar" class="btn btn-primary" type="submit">Guardar datos</button>
+                    <button class="btn btn-secondary" type="reset">Restablecer datos</button>
+                </form>
+            </div>
+            <div class="col m-4">
+                <div class="text-center">
+                    <h3>Datos almacenados</h3>
+                </div>
+                <div id="container_datos" class="datos-almacenados shadow-lg p-4">
+                    <!--<div class="pt-2">
+                        <p class="m-0">NC: Telly Schumm Pollich Pollich</p>
+                        <p class="m-0">FN: 1974-09-24</p>
+                        <p class="m-0">DC: 459 Smith Groves South Gloriastad, MN 99483-4988</p>
+                        <p class="m-0">TL: 683.233.6561x31365</p>
+                        <p class="m-0">CE: mathias.conne@namefake.com</p>
+                        <p class="m-0">TC: 4024007104561</p>
+                        <p class="m-0">FE: 07/23 - 14</p>
+                        <button id="borrar_Dato" class="btn btn-danger mt-2">Borrar datos</button>-->
+                </div>
+                <hr>
+            </div>
+            <hr>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="container-footer bg-dark text-center text-white p-4 mt-5">
+        <footer>Realizado por Luis Arturo @ 2020.</footer>
+    </div>
+    <script src="alltest.js"></script>
+</body>
+
+</html>

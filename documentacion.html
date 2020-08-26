@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Documentación</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/fontello.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row container-header">
+            <div class="col p-0">
+                <header class="d-md-flex align-items-center justify-content-md-between">
+                    <nav class="navbar p-0 col-12 col-md-auto">
+                        <a class="p-5" href="alltests.html">Inicio</a>
+                        <a class="p-5" href="documentacion.html">Documentación</a>
+                        <!--<a class="p-5" href="">Soporte</a>-->
+                    </nav>
+                    <!--<form class="col-12 col-md-5 m-0 p-4">
+                        <div class="form-group m-0 d-flex">
+                            <input class="form-control" type="text" id="buscar" placeholder="Busca tu prodúcto">
+                            <button class="m-0 icon-search" type="submit"></button>
+                        </div>
+                    </form>-->
+                </header>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="text-center mt-5">
+                    <h1 class="display-4">Documentación</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="mt-5">
+                    <h2>API utilizada para este proyecto</h2>
+                </div>
+                <div class="col-11">
+                    <p>El sistema de generación de falsas identidades esta compuesta por una API
+                        generada por <code>https://namefake.com/api</code></p>
+                    <p>Hay 2 maneras para enlazar la API a nuestro sitio Web, el metodo
+                        (FETCH API) y (AJAX), desde que salio la tecnología (FETCH API), AJAX regularmente no se esta
+                        usando, aunque hay programadores que la siguen utilizando.</p>
+                    <p class="lead">¿Que es FETCH API?</p>
+                    <p>FETCH API, es una interfaz JavaScript que le proporciona al usuario manipular recursos del canal
+                        HTTP, tales como peticiones y respuesta.
+                        También provee un método global <code>fetch()</code>
+                        que proporciona una forma fácil y lógica de obtener
+                        recursos de forma asíncrona por la red</p>
+                    <p class="lead">¿Que es AJAX?</p>
+                    <p>AJAX significa JavaScript asíncrono y XML (Asynchronous JavaScript and XML).
+                        Es un conjunto de técnicas de desarrollo web que permiten que
+                        las aplicaciones web funcionen de forma asíncrona, procesando
+                        cualquier solicitud al servidor en segundo plano.</p>
+                    <h3>Métodos para conectar una API con (FETCH API) y (AJAX)</h3>
+                    <div class="mt-5">
+                        <pre>
+                        <h4>// AJAX></h4>
+let url = 'https://namefake.com/api'
+const api = new XMLHttpRequest()
+api.onreadystatechange = function(){
+    if(this.readyState == 2 && this.status == 200){
+    let data = JSON.parse(this.responseText);
+    }
+}
+
+api.open('GET', url, true);
+api.send();
+                    </pre>
+                    </div>
+                    <div class="mt-5">
+                        <pre>
+                        <h4>// FETCH API></h4>
+fetch('https://namefake.com/api')
+.then(res => res.json())
+.then(data => {
+console.log(data)
+})
+                    </pre>
+                    </div>
+                    <div>
+                        <p>También se puede recorrer los datos con un ciclo, dependiendo la API que estes utilizando.
+                            Puedes recorrerlo directamente con el ciclo dentro de la condicional en caso que uses (AJAX)
+                            en el caso de (FETCH API) también lo puedes hacer dentro de las llaves '{}' de 'data =>'
+                            o llamando a una función en su lugar.
+                        </p>
+                    </div>
+                    <div>
+                        <pre>
+                            <h4>// Código utilizado para el proyecto API></h4>
+const boton = document.getElementById('boton');
+const datos = document.getElementById('datos');
+const boton_responsive = document.getElementById('boton_responsive');
+
+const traerDatos = (e) => {
+    e.preventDefault();
+    let url = `https://api.namefake.com/`;
+    const api = new XMLHttpRequest();
+    api.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+        data = JSON.parse(this.responseText);
+        let nombre = `${data.name}`+' '+`${data.maiden_name}`;
+        let correo = `${data.email_u}`+`${data.email_url[2]}`+`@namefake.com`;
+        datos.innerHTML = `
+            <code><p class="m-1 p-0">Nombre:<b> ${nombre}</b></p>
+            <p class="m-1 p-0">Apellido:<b> ${data.maiden_name}</b></p>
+            <p class="m-1 p-0">Fecha de nacimiento:<b> ${data.birth_data}</b></p>
+            <p class="m-1 p-0">Dirección:<b> ${data.address}</b></p>
+            <p class="m-1">Télefono:<b> ${data.phone_h}</b></p>
+            <p class="m-1">Corréo electrónico:<b> ${correo}</b></p>
+            <p class="m-1">Tarjeta de crédito:<b> ${data.plasticcard}</b></p>
+            <p class="m-1">Vence:<b> ${data.cardexpir}</b></p>
+            <p class="m-1">CVV2:<b> ${data.bonus}</b></p></code>
+                                      `
+
+    }
+}
+
+boton.addEventListener('click', traerDatos);
+boton_responsive.addEventListener('click', traerDatos);
+
+document.addEventListener('DOMContentLoaded', traerDatos);
+                        </pre>
+                    </div>
+                    <div>
+                        <pre>
+                            <h4>// Código utilizado para el proyecto LocalStorage></h4>
+const botonBorrar = document.getElementById('borrar_Dato');
+let container_Datos = document.getElementById('container_datos');
+let arrayDatos = [];
+
+const crearDatos = (nombre, fecha, correo, direccion, telefono, tarjeta, fechaEX) => {
+    let item = {
+      nombre: nombre,
+      fecha: fecha,
+      correo: correo,
+      direccion: direccion,
+      telefono: telefono,
+      tarjeta: tarjeta,
+      fechaEX: fechaEX
+    }
+    arrayDatos.push(item);
+    return item;
+  }
+  
+  const GuardarDB = () => {
+    localStorage.setItem('datos', JSON.stringify(arrayDatos));
+    mostrarDatos();
+  }
+  
+  const EliminarDB = (nombre) => {
+    let data;
+    arrayDatos.forEach((element, index) => {
+      if (element.nombre === nombre) {
+            data = index;
+      }
+    })
+  
+    arrayDatos.splice(data,1);
+    GuardarDB();
+}
+
+const formulario = document.querySelector('#formulario');
+
+formulario.addEventListener('submit', function(e){
+  e.preventDefault();
+  let error = document.getElementById('error');
+  let nombre = document.getElementById('nombre').value;
+  let fecha = document.getElementById('fecha').value; 
+  let correo = document.getElementById('correo').value; 
+  let direccion = document.getElementById('direccion').value; 
+  let telefono = document.getElementById('telefono').value; 
+  let tarjeta = document.getElementById('tarjeta').value; 
+  let fechaEX = document.getElementById('fechaEX').value;
+  if (nombre, fecha, correo, direccion, telefono, tarjeta, fechaEX === '') {
+    alert('Recuerda llenar todos los datos');
+    error.textContent = 'Rellena todos los campos';
+  }else {
+    error.innerHTML = '';
+    crearDatos(nombre, fecha, correo, direccion, telefono, tarjeta, fechaEX);
+    GuardarDB();
+    formulario.reset();
+  }
+});
+container_Datos.addEventListener('click', (e) => {
+  e.preventDefault();
+  let texto = e.path[1].childNodes[1].innerHTML.substr(4);
+  if(e.target.innerHTML === "Borrar datos"){
+    EliminarDB(texto);
+  }
+  
+})
+
+document.addEventListener('DOMContentLoaded', mostrarDatos);
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-footer bg-dark text-center text-white p-4 mt-5">
+        <footer>Realizado por Luis Arturo @ 2020.</footer>
+    </div>
+    <script src="alltest.js"></script>
+
+</body>
+
+</html>

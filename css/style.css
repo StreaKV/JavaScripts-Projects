@@ -1,0 +1,54 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+.container-header {
+    background:#000;
+}
+
+nav a {
+    color:#fff;
+}
+
+nav a:hover {
+    background:#fff;
+    text-decoration:none;
+}
+
+header form input[type=text]{
+    padding:23px;
+}
+
+header form button {
+    border:none;
+    padding-right:20px;
+    padding-left:20px;
+}
+
+header form button:hover {
+    background:#000;
+    color:#fff;
+}
+
+.container-info {
+    font-family:Roboto;
+    font-weight:400;
+}
+
+.boton-responsive {
+    margin-left:5px;
+    margin-top:10px;
+}
+
+.datos-almacenados {
+    overflow:scroll;
+    height:530px;
+}
+
+@media screen and (max-width:767px) and (min-width:200px){
+    .container-info {
+       padding:10px;
+       margin-left:5px;
+    }
+}
